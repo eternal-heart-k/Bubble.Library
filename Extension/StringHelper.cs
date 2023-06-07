@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bubble.Library.Shared.Extension
+namespace Bubble.Library.Extension
 {
     public static class StringHelper
     {

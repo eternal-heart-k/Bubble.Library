@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Bubble.Library.Shared.Extension
+namespace Bubble.Library.Extension
 {
     [DebuggerStepThrough]
     public static class CheckHelper
     {
-        public static T NotNull<T>(T value, string parameterName) => (object) value is not null ? value : throw new ArgumentNullException(nameof(parameterName));
+        public static T NotNull<T>(T value, string parameterName) => (object)value is not null ? value : throw new ArgumentNullException(nameof(parameterName));
 
         public static T NotNull<T>(T value, string parameterName, string message) => (object)value is not null ? value : throw new ArgumentNullException(nameof(parameterName), message);
 

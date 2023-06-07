@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Bubble.Library.Shared.Extension
+namespace Bubble.Library.Extension
 {
     public static class QueryHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Bubble.Library.Exception;
 
-namespace Bubble.Library.Shared.Extension
+namespace Bubble.Library.Extension
 {
     public static class ThrowHelper
     {
