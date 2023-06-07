@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace Bubble.Library.Extension
 {
+    /// <summary>
+    /// 检查相关
+    /// </summary>
     [DebuggerStepThrough]
     public static class CheckHelper
     {

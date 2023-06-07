@@ -2,6 +2,9 @@
 
 namespace Bubble.Library.Extension
 {
+    /// <summary>
+    /// 字符串相关
+    /// </summary>
     public static class StringHelper
     {
         /// <summary>

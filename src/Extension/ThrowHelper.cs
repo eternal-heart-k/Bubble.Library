@@ -3,6 +3,9 @@ using Bubble.Library.Exception;
 
 namespace Bubble.Library.Extension
 {
+    /// <summary>
+    /// 异常抛出相关
+    /// </summary>
     public static class ThrowHelper
     {
         [DoesNotReturn]
