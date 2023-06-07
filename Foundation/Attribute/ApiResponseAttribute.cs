@@ -1,6 +1,6 @@
 ﻿using Bubble.Library.Exception;
-using Bubble.Library.Foundation.Common;
-using Bubble.Library.Helper;
+using Bubble.Library.Extension;
+using Bubble.Library.Foundation.Dto.Common;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 
