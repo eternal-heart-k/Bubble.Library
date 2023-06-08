@@ -21,7 +21,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: $(projectCsproj)
-    versioningScheme: byBuildNumber
+    versioningScheme: 'off'
     packDirectory: $(Build.ArtifactStagingDirectory)
 - task: DotNetCoreCLI@2
   inputs:
