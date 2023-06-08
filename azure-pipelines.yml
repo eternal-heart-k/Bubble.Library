@@ -1,35 +1,46 @@
 trigger:
-- master
+  branches:
+    include: 
+    - refs/heads/master 
+  paths:
+    include:
+     - src
+  batch: True
 
-pool:
-  vmImage: 'ubuntu-latest'
 
+# 指定编译需要的配置
 variables:
-  buildConfiguration: 'Release'
+  projectPath: ''
+  projectCsproj: 'Bubble.Library.csproj'
 
-steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '7.x'
-    
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build'
-  inputs:
-    command: 'build'
-    arguments: '--configuration $(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: "dotnet pack"
-  inputs:
-    command: 'pack'
-    arguments: '--configuration $(buildConfiguration)'
-    packagesToPack: '**/*.csproj'
-    nobuild: true
-    versioningScheme: 'off'
-
-- task: DotNetCoreCLI@2
-  displayName: "dotnet push"
-  inputs:
-    command: 'custom'
-    custom: 'dotnet nuget push $(Build.ArtifactStagingDirectory)/**/*.nupkg -k $(APIKey) -s https://api.nuget.org/v3/index.json  --skip-duplicate'
+name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(Year:yy)$(DayOfYear)$(Rev:.r)
+jobs:
+- job: Build
+  displayName: Build
+  cancelTimeoutInMinutes: 1
+  pool:
+    name: Linux
+    demands:
+    - ci
+  steps:
+  - checkout: self
+    path: $(projectPath)
+    clean: true
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: $(projectPath)/$(projectCsproj)
+      restoreArguments: ' -s http://nuget.ehi.com.cn/v3/index.json'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: $(projectPath)/$(projectCsproj)
+      versioningScheme: byBuildNumber
+      packDirectory: $(Build.ArtifactStagingDirectory)
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'custom'
+      custom: 'nuget'
+      arguments: 'push $(Build.ArtifactStagingDirectory)/*.nupkg -s http://nuget.ehi.com.cn/v3/index.json -k $(APIKey) -n'
