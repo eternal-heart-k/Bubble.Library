@@ -1,14 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageId>Bubble.Library</PackageId>
+	  <Version>1.0.1</Version>
+	  <Authors>bubble</Authors>
+	  <Description>A .NET Web API Nuget that helps with rapid development</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.38" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.38" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+	<None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

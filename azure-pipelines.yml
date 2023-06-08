@@ -4,24 +4,26 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(Year:yy)$(DayOfYear)$(Rev:.r)
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: restore
     projects: '**/*.csproj'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     projects: '**/*.csproj'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
     nobuild: true
-    versioningScheme: byBuildNumber
+    versioningScheme: 'off'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet push'
   inputs:
