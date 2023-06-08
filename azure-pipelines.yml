@@ -18,9 +18,11 @@ steps:
   displayName: 'dotnet pack'
   inputs:
     command: pack
-    packagesToPack: '$(Build.ArtifactStagingDirectory)/Bubble.Library.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: PACKAGE_VERSION
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: $(majorVersion)
+    minorVersion: $(minorVersion)
+    patchVersion: $(patchVersion)
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
