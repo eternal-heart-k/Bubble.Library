@@ -1,11 +1,5 @@
 trigger:
-  branches:
-    include: 
-    - refs/heads/master 
-  paths:
-    include:
-     - src
-  batch: True
+- master
 
 
 # 指定编译需要的配置
