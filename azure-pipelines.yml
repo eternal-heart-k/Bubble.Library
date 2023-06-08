@@ -21,8 +21,9 @@ steps:
     packagesToPack: '**/*.csproj'
     nobuild: true
     versioningScheme: 'byEnvVar'
-    versionEnvVar: $(versionEnvVar)
+    versionEnvVar: '1.0.1'
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet push'
   inputs:
     command: 'custom'
     custom: 'nuget'
