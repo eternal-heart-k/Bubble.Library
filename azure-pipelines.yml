@@ -3,7 +3,6 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(Year:yy)$(DayOfYear)$(Rev:.r)
 
 variables:
   projectCsproj: 'Bubble.Library.csproj'
