@@ -9,7 +9,6 @@ variables:
 
 steps:
 - checkout: self
-  path: $(projectPath)
   clean: true
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
