@@ -15,7 +15,7 @@ steps:
   inputs:
     command: restore
     projects: $(projectCsproj)
-    restoreArguments: ' -s http://nuget.ehi.com.cn/v3/index.json'
+    restoreArguments: ' -s https://api.nuget.org/v3/index.json'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
