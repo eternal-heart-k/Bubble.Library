@@ -20,9 +20,10 @@ steps:
     command: pack
     packagesToPack: '**/*.csproj'
     nobuild: true
-    versioningScheme: 'off'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: $(versionEnvVar)
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
     custom: 'nuget'
-    arguments: 'push $(Build.ArtifactStagingDirectory)/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $(APIKey) -n'
+    arguments: 'push $(Build.ArtifactStagingDirectory)/**/*.nupkg -s https://api.nuget.org/v3/index.json -k $(APIKey) -n --skip-duplicate'
