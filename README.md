@@ -1,0 +1,3 @@
+# 描述
+## 帮助进行.NET Web API开发的Nuget包，正在持续完善中...
+### 源码见<https://github.com/eternal-heart-k/Bubble.Library>
