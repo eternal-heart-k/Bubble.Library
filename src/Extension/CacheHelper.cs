@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Bubble.Library.src.Extension
+namespace Bubble.Library.Extension
 {
     /// <summary>
     /// Redis分布式缓存相关
