@@ -6,7 +6,7 @@
 ## 说明
 1. 生命周期的依赖注入：IScopeDependency、ISingletonDependency、ITransientDependency
 - 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种
-- 在项目启动程序Program.cs中，添加以下代码依赖实现自动注入
+- 在项目启动程序Program.cs中，添加以下代码实现自动依赖注入
     ```
     RegisterLifeCycle.AddCustomServices(builder.Services);
     ```
