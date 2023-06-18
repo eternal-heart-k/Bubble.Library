@@ -7,15 +7,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using Bubble.Library.DependencyInjection;
-using Bubble.Library.Extension.Request;
 
 #nullable enable
 namespace Bubble.Library.Extension.Request
 {
     public class ServiceClient : IServiceClient, ITransientDependency
     {
-        public ServiceClient() { }
-
         /// <summary>
         /// 发送Http请求
         /// </summary>
