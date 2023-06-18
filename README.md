@@ -4,10 +4,20 @@
 <br>
 
 ## 说明
-1. 生命周期的依赖注入：IScopeDependency、ISingletonDependency、ITransientDependency
-- 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种
-- 在项目启动程序Program.cs中，添加以下代码实现自动依赖注入
-    ```
-    RegisterLifeCycle.AddCustomServices(builder.Services);
-    ```
-2. 待更新
+1. 生命周期的依赖注入
+    - 共有三个接口：IScopeDependency、ISingletonDependency、ITransientDependency。
+    - 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种。
+    - 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：`RegisterLifeCycle.AddCustomServices(builder.Services);`。
+2. EF Core
+    1. Entity类<br>
+    实体类继承`Entity`类可默认包含`int`类型的`Id`字段主键，若需要其他类型的主键，比如`string`类型，可继承`Entity<string>`扩展类。
+    2. IsDeleted接口<br>
+    实体类实现`IsDeleted`接口后，在使用EF Core查询会自动过滤`IsDeleted=true`的数据。
+    3. IHasCreationTime接口<br>
+    实体类实现`IHasCreationTime`接口后，在使用EF Core新增数据时，会自动赋值`CreationTime=DateTime.Now`。
+    4. IHasModificationTime接口<br>
+    实体类实现`IHasModificationTime`接口后，在使用EF Core修改数据时，会自动赋值`LastModificationTime=DateTime.Now`。
+    5. IHasDeletionTime接口<br>
+    实体类实现`IHasDeletionTime`接口后，在使用EF Core删除数据时，会自动赋值`DeletionTime=DateTime.Now`，同时实现`IsDeleted`接口的话，会将删除状态转换为修改状态，并把`IsDeleted`设置为`true`。
+3. 待更新...
+
