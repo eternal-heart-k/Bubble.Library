@@ -20,9 +20,9 @@
     5. IHasDeletionTime接口<br>
     实体类实现`IHasDeletionTime`接口后，在使用EF Core删除数据时，会自动赋值`DeletionTime=DateTime.Now`，同时实现`IsDeleted`接口的话，会将删除状态转换为修改状态，并把`IsDeleted`设置为`true`。
 3. 阿里云
-    1. 短信验证码
+    1. 短信验证码<br>
     支持单个发送和批量发送，批量发送一次最多支持100个
-    2. OSS存储
+    2. OSS存储<br>
     目前支持有上传图片接口，后续会更新上传文件、视频等接口
 4. 待更新...
 
