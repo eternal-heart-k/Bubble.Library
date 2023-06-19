@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
+#nullable enable
 namespace Bubble.Library.Extension
 {
     /// <summary>
@@ -12,9 +14,8 @@ namespace Bubble.Library.Extension
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
-        public static string GetNewGuid(string format = null)
-        {
-            return Guid.NewGuid().ToString(format);
-        }
+        public static string GetNewGuid(string? format) => Guid.NewGuid().ToString(format);
+
+        public static bool IsNullOrWhiteSpace([NotNullWhen(false)] this string? value) => string.IsNullOrWhiteSpace(value);
     }
 }
