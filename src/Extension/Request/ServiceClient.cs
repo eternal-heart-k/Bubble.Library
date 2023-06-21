@@ -220,7 +220,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="requestParam"></param>
         /// <param name="method"></param>
         /// <returns></returns>
-        protected virtual string FormatUrl(string url, object? requestParam, HttpRequestMethod method)
+        public virtual string FormatUrl(string url, object? requestParam, HttpRequestMethod method)
         {
             if (method != HttpRequestMethod.Get && method != HttpRequestMethod.Delete || requestParam is null)
             {
@@ -241,7 +241,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="method"></param>
         /// <param name="contentType"></param>
         /// <returns></returns>
-        protected virtual StringContent? FormatParameter(object? requestParam, HttpRequestMethod method, string contentType = "application/json")
+        public virtual StringContent? FormatParameter(object? requestParam, HttpRequestMethod method, string contentType = "application/json")
         {
             if (method == HttpRequestMethod.Get || method == HttpRequestMethod.Delete)
             {

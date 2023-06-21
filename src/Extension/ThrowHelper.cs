@@ -13,5 +13,11 @@ namespace Bubble.Library.Extension
         {
             throw new StringResponseException(message);
         }
+
+        [DoesNotReturn]
+        public static void Throw(int errorCode, string message)
+        {
+            throw new StringResponseException(errorCode, message);
+        }
     }
 }
