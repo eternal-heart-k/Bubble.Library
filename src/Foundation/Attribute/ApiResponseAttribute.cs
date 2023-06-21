@@ -19,8 +19,9 @@ namespace Bubble.Library.Foundation.Attribute
                     IsSuccess = false,
                     OperationId = StringHelper.GetNewGuid("N"),
                 };
-                if (exception is StringResponseException)
+                if (exception is StringResponseException rx)
                 {
+                    apiResult.ErrorCode = rx.ErrorCode;
                     context.ExceptionHandled = true;
                     context.Result = new ObjectResult(apiResult)
                     {

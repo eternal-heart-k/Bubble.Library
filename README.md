@@ -1,28 +1,33 @@
-# 描述
-## 帮助进行.NET Web API开发的Nuget包，正在持续完善中...
-### 源码见<https://github.com/eternal-heart-k/Bubble.Library>
-<br>
+## 描述
+一个帮助进行.NET Web API开发的Nuget包，正在持续完善中...<br>
 
-## 说明
-1. 生命周期的依赖注入
-    - 共有三个接口：IScopeDependency、ISingletonDependency、ITransientDependency。
-    - 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种。
-    - 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：`RegisterLifeCycle.AddCustomServices(builder.Services);`。
-2. EF Core
-    1. Entity类<br>
-    实体类继承`Entity`类可默认包含`int`类型的`Id`字段主键，若需要其他类型的主键，比如`string`类型，可继承`Entity<string>`扩展类。
-    2. IsDeleted接口<br>
-    实体类实现`IsDeleted`接口后，在使用EF Core查询会自动过滤`IsDeleted=true`的数据。
-    3. IHasCreationTime接口<br>
-    实体类实现`IHasCreationTime`接口后，在使用EF Core新增数据时，会自动赋值`CreationTime=DateTime.Now`。
-    4. IHasModificationTime接口<br>
-    实体类实现`IHasModificationTime`接口后，在使用EF Core修改数据时，会自动赋值`LastModificationTime=DateTime.Now`。
-    5. IHasDeletionTime接口<br>
-    实体类实现`IHasDeletionTime`接口后，在使用EF Core删除数据时，会自动赋值`DeletionTime=DateTime.Now`，同时实现`IsDeleted`接口的话，会将删除状态转换为修改状态，并把`IsDeleted`设置为`true`。
-3. 阿里云
-    1. 短信验证码<br>
-    支持单个发送和批量发送，批量发送一次最多支持100个
-    2. OSS存储<br>
-    目前支持有上传图片接口，后续会更新上传文件、视频等接口
-4. 待更新...
+## 功能说明
+### 生命周期的依赖注入
+- 共有三个接口：IScopeDependency、ISingletonDependency、ITransientDependency。
+- 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种。
+- 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：`RegisterLifeCycle.AddCustomServices(builder.Services);`。
+### EF Core
+- Entity类<br>
+实体类继承`Entity`类可默认包含`int`类型的`Id`字段主键，若需要其他类型的主键，比如`string`类型，可继承`Entity<string>`扩展类。
+- IsDeleted接口<br>
+实体类实现`IsDeleted`接口后，在使用EF Core查询会自动过滤`IsDeleted=true`的数据。
+- IHasCreationTime接口<br>
+实体类实现`IHasCreationTime`接口后，在使用EF Core新增数据时，会自动赋值`CreationTime=DateTime.Now`。
+- IHasModificationTime接口<br>
+实体类实现`IHasModificationTime`接口后，在使用EF Core修改数据时，会自动赋值`LastModificationTime=DateTime.Now`。
+- IHasDeletionTime接口<br>
+实体类实现`IHasDeletionTime`接口后，在使用EF Core删除数据时，会自动赋值`DeletionTime=DateTime.Now`，同时实现`IsDeleted`接口的话，会将删除状态转换为修改状态，并把`IsDeleted`设置为`true`。
+### 阿里云
+- 短信验证码<br>
+Service注入`ISmsService`可调用相关函数：支持单个发送和批量发送短信验证码，批量发送一次最多支持100个。
+- OSS存储<br>
+Service注入`IOssService`可调用相关函数：目前支持有上传图片函数，后续会更新上传文件、视频等函数。
+### 接口统一返回类ApiResult
+接口继承`ApiBaseController`类后，返回值会自动引入`ApiResult`类：
+- `Result`：返回值（当接口有返回值时有）
+- `IsSuccess`：接口执行成功标识
+- `Message`：错误信息，结合`StringResponseException`异常，抛出的错误信息会体现在这。
+- `ErrorCode`：错误代码
+- `OperationId`：操作Id
+### 待更新...
 
