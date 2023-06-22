@@ -103,18 +103,18 @@ namespace Bubble.Library.Foundation.Dto.QQ
         /// 标识用户是否为黄钻用户
         /// </summary>
         [JsonPropertyName("is_yellow_vip")]
-        public bool IsYellowVip { get; set; }
+        public string IsYellowVip { get; set; }
 
         /// <summary>
         /// 黄钻等级
         /// </summary>
         [JsonPropertyName("yellow_vip_level")]
-        public int YellowVipLevel { get; set; }
+        public string YellowVipLevel { get; set; }
 
         /// <summary>
         /// 是否为年费黄钻用户
         /// </summary>
         [JsonPropertyName("is_yellow_year_vip")]
-        public bool IsYellowYearVip { get; set; }
+        public string IsYellowYearVip { get; set; }
     }
 }
