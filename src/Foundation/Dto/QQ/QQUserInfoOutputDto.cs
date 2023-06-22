@@ -91,7 +91,7 @@ namespace Bubble.Library.Foundation.Dto.QQ
         /// 年
         /// </summary>
         [JsonPropertyName("year")]
-        public int Year { get; set; }
+        public string Year { get; set; }
 
         /// <summary>
         /// 星座
