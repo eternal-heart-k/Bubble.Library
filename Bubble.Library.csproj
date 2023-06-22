@@ -7,7 +7,7 @@
 	  <PackageId>Bubble.Library</PackageId>
 	  <Version>1.4.2</Version>
 	  <Authors>bubble</Authors>
-	  <Description>A .NET Web API Nuget that helps with rapid development</Description>
+	  <Description>A .NET Web API Nuget that helps with rapid development.</Description>
   </PropertyGroup>
 
   <ItemGroup>
