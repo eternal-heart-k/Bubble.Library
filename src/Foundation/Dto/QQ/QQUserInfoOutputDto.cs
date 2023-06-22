@@ -24,7 +24,7 @@ namespace Bubble.Library.Foundation.Dto.QQ
         /// 0或者不返回：没有数据丢失，可以缓存。1：有部分数据丢失或错误，不要缓存
         /// </summary>
         [JsonPropertyName("is_lost")]
-        public bool IsLost { get; set; }
+        public int IsLost { get; set; }
 
         /// <summary>
         /// 用户在QQ空间的昵称
