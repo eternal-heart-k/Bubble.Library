@@ -73,7 +73,7 @@ namespace Bubble.Library.Foundation.Dto.QQ
         /// 性别类型。默认返回2
         /// </summary>
         [JsonPropertyName("gender_type")]
-        public string GenderType { get; set; }
+        public int GenderType { get; set; }
 
         /// <summary>
         /// 省
