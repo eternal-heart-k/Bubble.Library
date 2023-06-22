@@ -18,10 +18,10 @@
 - IHasDeletionTime接口<br>
 实体类实现`IHasDeletionTime`接口后，在使用EF Core删除数据时，会自动赋值`DeletionTime=DateTime.Now`，同时实现`IsDeleted`接口的话，会将删除状态转换为修改状态，并把`IsDeleted`设置为`true`。
 ### 阿里云
-- 短信验证码<br>
-Service注入`ISmsService`可调用相关函数：支持单个发送和批量发送短信验证码，批量发送一次最多支持100个。
-- OSS存储<br>
-Service注入`IOssService`可调用相关函数：目前支持有上传图片函数，后续会更新上传文件、视频等函数。
+#### 短信验证码
+Service注入`ISmsService`可调用短信验证码相关函数：支持单个发送和批量发送短信验证码，批量发送一次最多支持100个。
+#### OSS存储
+Service注入`IOssService`可调用OSS存储相关函数：目前支持有上传图片函数，后续会更新上传文件、视频等函数。
 ### 接口统一返回类ApiResult
 接口继承`ApiBaseController`类后，返回值会自动引入`ApiResult`类：
 - `Result`：返回值（当接口有返回值时有）
@@ -29,5 +29,13 @@ Service注入`IOssService`可调用相关函数：目前支持有上传图片函
 - `Message`：错误信息，结合`StringResponseException`异常，抛出的错误信息会体现在这。
 - `ErrorCode`：错误代码
 - `OperationId`：操作Id
+### QQ
+#### 快速登录
+Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实现会有所不同，所以这里实现了以下四个基本的阶段函数：
+1. `GetAuthorizationLink`：入参`QQAuthorizationCodeInputDto`，返回封装好的QQ授权的链接地址<br>
+注：此步骤生成的`state`，最好在回调接口中进行检验，可存储在redis中以便校验
+2. `GetAccessTokenAsync`：入参`QQAccessTokenInputDto`，返回`QQAccessTokenOutputDto`包含`AccessToken`等字段
+3. `GetOpenIdAsync`：入参`QQOpenIdInputDto`，返回`QQOpenIdOutputDto`包含`OpenId`等字段
+4. `GetUserInfoAsync`：入参`QQUserInfoInputDto`，返回`QQUserInfoOutputDto`包含QQ用户的基本信息
 ### 待更新...
 

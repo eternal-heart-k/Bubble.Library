@@ -8,6 +8,7 @@
 	  <Version>1.4.4</Version>
 	  <Authors>bubble</Authors>
 	  <Description>A .NET Web API Nuget that helps with rapid development.</Description>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
