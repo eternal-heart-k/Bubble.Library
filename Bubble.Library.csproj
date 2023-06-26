@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageId>Bubble.Library</PackageId>
-	  <Version>1.4.5</Version>
+	  <Version>1.5.0</Version>
 	  <Authors>bubble</Authors>
 	  <Description>A .NET Web API Nuget that helps with rapid development.</Description>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
