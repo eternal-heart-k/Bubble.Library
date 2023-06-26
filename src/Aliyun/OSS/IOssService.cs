@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace Bubble.Library.Aliyun.Oss
 {
+    /// <summary>
+    /// OSS存储
+    /// </summary>
     public interface IOssService
     {
         /// <summary>

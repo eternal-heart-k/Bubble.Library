@@ -25,6 +25,6 @@ namespace Bubble.Library.Foundation.Dto.Aliyun
         /// <summary>
         /// 短信模板参数
         /// </summary>
-        public List<SmsTemplateParamDto> SmsTemplateParam { get; set; }
+        public List<Dictionary<string, string>> SmsTemplateParam { get; set; }
     }
 }

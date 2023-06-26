@@ -9,10 +9,17 @@ using Tea;
 
 namespace Bubble.Library.Aliyun.Sms
 {
+    /// <summary>
+    /// SMS短信
+    /// </summary>
     public class SmsService : ISmsService, ITransientDependency
     {
         private readonly ILogger<SmsService> _logger;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
         public SmsService(ILogger<SmsService> logger)
         {
             _logger = logger;

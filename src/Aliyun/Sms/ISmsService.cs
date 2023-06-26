@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Bubble.Library.Aliyun.Sms
 {
+    /// <summary>
+    /// SMS短信
+    /// </summary>
     public interface ISmsService
     {
         /// <summary>
