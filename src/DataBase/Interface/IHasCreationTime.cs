@@ -7,6 +7,9 @@ namespace Bubble.Library.DataBase.Interface
     /// </summary>
     public interface IHasCreationTime
     {
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         DateTime CreationTime { get; set; }
     }
 }

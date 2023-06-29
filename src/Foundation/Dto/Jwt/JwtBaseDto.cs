@@ -5,6 +5,9 @@
     /// </summary>
     public class JwtBaseDto
     {
+        /// <summary>
+        /// token
+        /// </summary>
         public string Token { get; set; }
     }
 }

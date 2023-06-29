@@ -11,6 +11,9 @@ using Bubble.Library.DependencyInjection;
 #nullable enable
 namespace Bubble.Library.Extension.Request
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ServiceClient : IServiceClient, ITransientDependency
     {
         /// <summary>

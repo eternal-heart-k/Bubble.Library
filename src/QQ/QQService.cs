@@ -15,6 +15,10 @@ namespace Bubble.Library.QQ
     {
         private readonly IServiceClient _serviceClient;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceClient"></param>
         public QQService(IServiceClient serviceClient)
         {
             _serviceClient = serviceClient;

@@ -6,8 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bubble.Library.Foundation.Attribute
 {
+    /// <summary>
+    /// API响应属性，为API调用接口包裹ApiResult
+    /// </summary>
     public class ApiResponseAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// 重写OnActionExecuted
+        /// </summary>
+        /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             var exception = context.Exception;
