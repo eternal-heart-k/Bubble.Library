@@ -11,6 +11,10 @@ namespace Bubble.Library.DependencyInjection
     /// </summary>
     public static class RegisterLifeCycle
     {
+        /// <summary>
+        /// program中调用来自动注册
+        /// </summary>
+        /// <param name="services"></param>
         public static void AddCustomServices(this IServiceCollection services)
         {
             services.RegisterLifeCycleByInherit(typeof(ISingletonDependency));

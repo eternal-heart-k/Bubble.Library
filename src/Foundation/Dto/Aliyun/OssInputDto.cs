@@ -1,5 +1,8 @@
 ﻿namespace Bubble.Library.Foundation.Dto.Aliyun
 {
+    /// <summary>
+    /// OSS入参
+    /// </summary>
     public class OssInputDto
     {
         /// <summary>
@@ -7,10 +10,19 @@
         /// </summary>
         public string EndPoint { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string AccessKeyId { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string AccessKeySecret { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string BucketName { get; set; }
 
         /// <summary>

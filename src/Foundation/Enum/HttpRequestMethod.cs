@@ -1,5 +1,8 @@
 ﻿namespace Bubble.Library.Foundation.Enum
 {
+    /// <summary>
+    /// Http请求方法枚举
+    /// </summary>
     public enum HttpRequestMethod
     {
         /// <summary>
