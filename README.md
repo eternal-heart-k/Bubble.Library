@@ -10,6 +10,7 @@
 RegisterLifeCycle.AddCustomServices(builder.Services);
 或
 使用Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(b =>
 {
     b.RegisterModule<DependencyModule>();
