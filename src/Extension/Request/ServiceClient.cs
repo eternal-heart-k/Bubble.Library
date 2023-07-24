@@ -2,6 +2,7 @@
 using Bubble.Library.Foundation.Enum;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -67,8 +68,7 @@ namespace Bubble.Library.Extension.Request
                 _ => throw new InvalidOperationException("Http请求方式不正确"),
             };
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
@@ -96,8 +96,7 @@ namespace Bubble.Library.Extension.Request
             using var client = new HttpClient();
             var response = await client.GetAsync(FormatUrl(url, requestParam, HttpRequestMethod.Get));
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
@@ -125,8 +124,7 @@ namespace Bubble.Library.Extension.Request
             using var client = new HttpClient();
             var response = await client.PostAsync(FormatUrl(url, requestParam, HttpRequestMethod.Post), FormatParameter(requestParam, HttpRequestMethod.Post));
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
@@ -154,8 +152,7 @@ namespace Bubble.Library.Extension.Request
             using var client = new HttpClient();
             var response = await client.PutAsync(FormatUrl(url, requestParam, HttpRequestMethod.Put), FormatParameter(requestParam, HttpRequestMethod.Put));
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
@@ -183,8 +180,7 @@ namespace Bubble.Library.Extension.Request
             using var client = new HttpClient();
             var response = await client.DeleteAsync(FormatUrl(url, requestParam, HttpRequestMethod.Delete));
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
@@ -212,8 +208,7 @@ namespace Bubble.Library.Extension.Request
             using var client = new HttpClient();
             var response = await client.PatchAsync(FormatUrl(url, requestParam, HttpRequestMethod.Patch), FormatParameter(requestParam, HttpRequestMethod.Patch));
             response.EnsureSuccessStatusCode();
-            var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return await response.Content.ReadFromJsonAsync<T>();
         }
 
         /// <summary>
