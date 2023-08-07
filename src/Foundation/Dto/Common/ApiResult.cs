@@ -5,10 +5,18 @@
     /// </summary>
     public class ApiResult
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ApiResult()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorCode"></param>
+        /// <param name="message"></param>
         public ApiResult(int errorCode, string message)
         {
             ErrorCode = errorCode;
@@ -41,10 +49,19 @@
     /// </summary>
     public class ApiResult<TResult> : ApiResult
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ApiResult()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorCode"></param>
+        /// <param name="message"></param>
+        /// <param name="result"></param>
         public ApiResult(int errorCode, string message, TResult result = default) : base(errorCode, message)
         {
             Result = result;

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Bubble.Library.Extension.Request
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IServiceClient
     {
         /// <summary>

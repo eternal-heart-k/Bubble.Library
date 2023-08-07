@@ -1,4 +1,6 @@
-﻿namespace Bubble.Library.Foundation.Dto.Aliyun
+﻿using System.Collections.Generic;
+
+namespace Bubble.Library.Foundation.Dto.Aliyun
 {
     /// <summary>
     /// 发送单个短信入参
@@ -23,6 +25,6 @@
         /// <summary>
         /// 短信模板参数
         /// </summary>
-        public SmsTemplateParamDto SmsTemplateParam { get; set; }
+        public Dictionary<string, string> SmsTemplateParam { get; set; }
     }
 }

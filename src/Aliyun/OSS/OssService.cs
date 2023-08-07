@@ -8,10 +8,17 @@ using Microsoft.Extensions.Logging;
 
 namespace Bubble.Library.Aliyun.Oss
 {
+    /// <summary>
+    /// OSS存储
+    /// </summary>
     public class OssService : IOssService, ITransientDependency
     {
         private readonly ILogger<OssService> _logger;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
         public OssService(ILogger<OssService> logger)
         {
             _logger = logger;

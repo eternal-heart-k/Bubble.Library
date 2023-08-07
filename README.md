@@ -5,7 +5,17 @@
 ### 生命周期的依赖注入
 - 共有三个接口：IScopeDependency、ISingletonDependency、ITransientDependency。
 - 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种。
-- 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：`RegisterLifeCycle.AddCustomServices(builder.Services);`。
+- 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：
+```
+RegisterLifeCycle.AddCustomServices(builder.Services);
+或
+使用Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(b =>
+{
+    b.RegisterModule<DependencyModule>();
+});
+```
 ### EF Core
 - Entity类<br>
 实体类继承`Entity`类可默认包含`int`类型的`Id`字段主键，若需要其他类型的主键，比如`string`类型，可继承`Entity<string>`扩展类。
