@@ -6,8 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bubble.Library.Foundation.Attribute
 {
+    /// <summary>
+    /// Api响应结果处理属性
+    /// </summary>
     public class ApiResponseAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             var exception = context.Exception;
@@ -41,6 +48,14 @@ namespace Bubble.Library.Foundation.Attribute
                     Result = result,
                     IsSuccess = true,
                     OperationId = StringHelper.GetNewGuid("N"),
+                });
+            }
+            else
+            {
+                context.Result = new ObjectResult(new ApiResult
+                {
+                    IsSuccess = true,
+                    OperationId = StringHelper.GetNewGuid("N")
                 });
             }
         }
