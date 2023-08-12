@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Aliyun.OSS;
 using Aliyun.OSS.Common;
 using Microsoft.Extensions.Logging;
+using System.IO;
+using Bubble.Library.Extension;
 
 namespace Bubble.Library.Aliyun.Oss
 {
@@ -35,6 +37,10 @@ namespace Bubble.Library.Aliyun.Oss
             var client = new OssClient(dto.EndPoint, dto.AccessKeyId, dto.AccessKeySecret);
             try
             {
+                if (dto.StorePath.IsNullOrWhiteSpace())
+                {
+                    dto.StorePath = StringHelper.GenerateTimeStamp() + Path.GetExtension(formFile.FileName);
+                }
                 client.PutObject(dto.BucketName, dto.StorePath, formFile.OpenReadStream());
                 return dto.StoreBasePath + dto.StorePath;
             }
