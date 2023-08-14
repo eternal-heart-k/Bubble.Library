@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Bubble.Library.DataBase.Interface;
@@ -155,17 +156,35 @@ namespace Bubble.Library.DataBase.EntityFrameworkCore
             ((ISoftDelete)entry.Entity).IsDeleted = true;
         }
 
+        private static readonly MethodInfo ConfigureEntityIsDeletedQueryFilterMethodInfo
+            = typeof(LibraryDbContext<TDbContext>)
+                .GetMethod(
+                    nameof(ConfigureEntityIsDeletedQueryFilter),
+                    BindingFlags.Instance | BindingFlags.NonPublic
+                );
+
         /// <summary>
         /// IsDeleted查询过滤
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected virtual void ConfigureIsDeletedQueryFilter(ModelBuilder modelBuilder)
         {
-            Expression<Func<object, bool>> expression = e => !EF.Property<bool>(e, "IsDeleted");
             foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(e => typeof(ISoftDelete).IsAssignableFrom(e.ClrType)))
             {
-                modelBuilder.Entity(entityType.ClrType).HasQueryFilter(expression);
+                ConfigureEntityIsDeletedQueryFilterMethodInfo
+                    .MakeGenericMethod(entityType.ClrType)
+                    .Invoke(this, new object[] { modelBuilder, entityType });
             }
+        }
+
+        private void ConfigureEntityIsDeletedQueryFilter<TEntity>(ModelBuilder modelBuilder) where TEntity : class
+        {
+            modelBuilder.Entity<TEntity>().HasQueryFilter(GetIsDeletedQueryFilterExpress<TEntity>());
+        }
+
+        private Expression<Func<TEntity, bool>> GetIsDeletedQueryFilterExpress<TEntity>() where TEntity : class
+        {
+            return e => !EF.Property<bool>(e, "IsDeleted");
         }
     }
 }
