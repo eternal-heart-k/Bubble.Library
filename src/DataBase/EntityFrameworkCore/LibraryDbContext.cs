@@ -173,7 +173,7 @@ namespace Bubble.Library.DataBase.EntityFrameworkCore
             {
                 ConfigureEntityIsDeletedQueryFilterMethodInfo
                     .MakeGenericMethod(entityType.ClrType)
-                    .Invoke(this, new object[] { modelBuilder, entityType });
+                    .Invoke(this, new object[] { modelBuilder });
             }
         }
 
