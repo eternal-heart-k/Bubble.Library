@@ -161,7 +161,7 @@ namespace Bubble.Library.DataBase.EntityFrameworkCore
         /// <param name="modelBuilder"></param>
         protected virtual void ConfigureIsDeletedQueryFilter(ModelBuilder modelBuilder)
         {
-            Expression<Func<ISoftDelete, bool>> expression = e => !EF.Property<bool>(e, "IsDeleted");
+            Expression<Func<object, bool>> expression = e => !EF.Property<bool>(e, "IsDeleted");
             foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(e => typeof(ISoftDelete).IsAssignableFrom(e.ClrType)))
             {
                 modelBuilder.Entity(entityType.ClrType).HasQueryFilter(expression);
