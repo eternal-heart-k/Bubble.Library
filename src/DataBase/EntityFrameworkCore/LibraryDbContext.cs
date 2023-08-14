@@ -127,21 +127,21 @@ namespace Bubble.Library.DataBase.EntityFrameworkCore
         /// </summary>
         /// <param name="entry"></param>
         protected virtual void SetCreationProperties(EntityEntry entry) =>
-            this.EntityPropertySetter.SetCreationProperties(entry);
+            this.EntityPropertySetter.SetCreationProperties(entry.Entity);
 
         /// <summary>
         /// 设置修改属性
         /// </summary>
         /// <param name="entry"></param>
         protected virtual void SetModificationProperties(EntityEntry entry) =>
-            this.EntityPropertySetter.SetModificationProperties(entry);
+            this.EntityPropertySetter.SetModificationProperties(entry.Entity);
 
         /// <summary>
         /// 设置删除属性
         /// </summary>
         /// <param name="entry"></param>
         protected virtual void SetDeletionProperties(EntityEntry entry) =>
-            this.EntityPropertySetter.SetDeletionProperties(entry);
+            this.EntityPropertySetter.SetDeletionProperties(entry.Entity);
 
         /// <summary>
         /// 更改为软删除
