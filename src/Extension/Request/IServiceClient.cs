@@ -19,7 +19,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="requestParam"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        Task SendRequestAsync(string url, HttpRequestMethod method, object? requestParam);
+        Task SendRequestAsync(string url, HttpRequestMethod method, object? requestParam = null);
 
         /// <summary>
         /// 发送Http请求（有返回值）
@@ -30,7 +30,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="requestParam"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        Task<T> SendRequestAsync<T>(string url, HttpRequestMethod method, object? requestParam);
+        Task<T> SendRequestAsync<T>(string url, HttpRequestMethod method, object? requestParam = null);
 
         /// <summary>
         /// Get请求
@@ -38,7 +38,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task GetAsync(string url, object? requestParam);
+        Task GetAsync(string url, object? requestParam = null);
 
         /// <summary>
         /// Get请求（有返回值）
@@ -47,7 +47,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task<T> GetAsync<T>(string url, object? requestParam);
+        Task<T> GetAsync<T>(string url, object? requestParam = null);
 
         /// <summary>
         /// Post请求
@@ -55,7 +55,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task PostAsync(string url, object? requestParam);
+        Task PostAsync(string url, object? requestParam = null);
 
         /// <summary>
         /// Post请求（有返回值）
@@ -64,7 +64,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task<T> PostAsync<T>(string url, object? requestParam);
+        Task<T> PostAsync<T>(string url, object? requestParam = null);
 
         /// <summary>
         /// Put请求
@@ -72,7 +72,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task PutAsync(string url, object? requestParam);
+        Task PutAsync(string url, object? requestParam = null);
 
         /// <summary>
         /// Put请求（有返回值）
@@ -81,7 +81,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task<T> PutAsync<T>(string url, object? requestParam);
+        Task<T> PutAsync<T>(string url, object? requestParam = null);
 
         /// <summary>
         /// Delete请求
@@ -89,7 +89,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task DeleteAsync(string url, object? requestParam);
+        Task DeleteAsync(string url, object? requestParam = null);
 
         /// <summary>
         /// Delete请求（有返回值）
@@ -98,7 +98,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task<T> DeleteAsync<T>(string url, object? requestParam);
+        Task<T> DeleteAsync<T>(string url, object? requestParam = null);
 
         /// <summary>
         /// Patch请求
@@ -106,7 +106,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task PatchAsync(string url, object? requestParam);
+        Task PatchAsync(string url, object? requestParam = null);
 
         /// <summary>
         /// Patch请求（有返回值）
@@ -115,7 +115,7 @@ namespace Bubble.Library.Extension.Request
         /// <param name="url"></param>
         /// <param name="requestParam"></param>
         /// <returns></returns>
-        Task<T> PatchAsync<T>(string url, object? requestParam);
+        Task<T> PatchAsync<T>(string url, object? requestParam = null);
 
         /// <summary>
         /// 格式化请求链接Url
