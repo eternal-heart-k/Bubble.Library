@@ -3,9 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <NoWarn>CS1591</NoWarn>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageId>Bubble.Library</PackageId>
-	  <Version>2.0.0</Version>
+	  <Version>2.0.1</Version>
 	  <Authors>bubble</Authors>
 	  <Description>A .NET Web API Nuget that helps with rapid development.</Description>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
