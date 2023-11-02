@@ -42,6 +42,36 @@
         /// 操作Id
         /// </summary>
         public string OperationId { get; set; }
+
+        public static ApiResult Success(string operationId)
+        {
+            return new ApiResult
+            {
+                IsSuccess = true,
+                OperationId = operationId
+            };
+        }
+
+        public static ApiResult<T> Success<T>(T result, string operationId)
+        {
+            return new ApiResult<T>
+            {
+                IsSuccess = true,
+                Result = result,
+                OperationId = operationId
+            };
+        }
+
+        public static ApiResult Error(int errorCode, string message, string operationId)
+        {
+            return new ApiResult
+            {
+                IsSuccess = false,
+                ErrorCode = errorCode,
+                Message = message,
+                OperationId = operationId
+            };
+        }
     }
 
     /// <summary>

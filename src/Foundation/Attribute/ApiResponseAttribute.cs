@@ -1,8 +1,9 @@
 ﻿using Bubble.Library.Exception;
-using Bubble.Library.Extension;
 using Bubble.Library.Foundation.Dto.Common;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
+using Bubble.Library.src.Trace;
+using Bubble.Library.src.Foundation.Constant;
 
 namespace Bubble.Library.Foundation.Attribute
 {
@@ -17,46 +18,26 @@ namespace Bubble.Library.Foundation.Attribute
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            var exception = context.Exception;
-            if (exception is not null)
+            var operationId = TraceContext.OperationId;
+
+            object value = context.Result switch
             {
-                var apiResult = new ApiResult
-                {
-                    Message = exception.Message,
-                    IsSuccess = false,
-                    OperationId = StringHelper.GetNewGuid("N"),
-                };
-                if (exception is StringResponseException rx)
-                {
-                    apiResult.ErrorCode = rx.ErrorCode;
-                    context.ExceptionHandled = true;
-                    context.Result = new ObjectResult(apiResult)
-                    {
-                        StatusCode = 288
-                    };
-                }
-                else
-                {
-                    context.Result = new ObjectResult(apiResult);
-                }
+                BadRequestObjectResult result => result,
+                ObjectResult { Value: not ApiResult } result => ApiResult.Success(result.Value, operationId),
+                EmptyResult => ApiResult.Success(operationId),
+                _ => null
+            };
+
+            if (context.Exception is not null && context.Exception is StringResponseException strEx)
+            {
+                value = ApiResult.Error(strEx.ErrorCode, strEx.Message, operationId);
+                context.ExceptionHandled = true;
+                context.Result = new OkObjectResult(value) { StatusCode = StatusCodeConstants.BusinessException };
             }
-            else if (context.Result is ObjectResult objectResult)
+
+            else if (value is ApiResult)
             {
-                var result = objectResult.Value;
-                context.Result = new ObjectResult(new ApiResult<object>
-                {
-                    Result = result,
-                    IsSuccess = true,
-                    OperationId = StringHelper.GetNewGuid("N"),
-                });
-            }
-            else
-            {
-                context.Result = new ObjectResult(new ApiResult
-                {
-                    IsSuccess = true,
-                    OperationId = StringHelper.GetNewGuid("N")
-                });
+                context.Result = new OkObjectResult(value);
             }
         }
     }
