@@ -1,4 +1,4 @@
-﻿namespace Bubble.Library.src.Foundation.Constant
+﻿namespace Bubble.Library.Foundation.Constant
 {
     public static class StatusCodeConstants
     {

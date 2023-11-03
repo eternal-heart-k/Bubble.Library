@@ -1,5 +1,4 @@
 ﻿using Bubble.Library.DependencyInjection;
-using Bubble.Library.Foundation.Attribute;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bubble.Library.Foundation.ApiController
@@ -9,7 +8,6 @@ namespace Bubble.Library.Foundation.ApiController
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    [ApiResponse]
     public class ApiBaseController : ControllerBase, ITransientDependency
     {
     }

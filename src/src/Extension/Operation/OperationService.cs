@@ -1,7 +1,7 @@
 ﻿using Bubble.Library.DependencyInjection;
 using System.Diagnostics;
 
-namespace Bubble.Library.src.Extension.Operation
+namespace Bubble.Library.Extension.Operation
 {
     public class OperationService : IOperationService, ISingletonDependency
     {

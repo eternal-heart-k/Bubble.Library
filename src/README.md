@@ -1,21 +1,21 @@
 ## 描述
 一个帮助进行.NET Web API开发的Nuget包，正在持续完善中...<br>
 
+## 近期改动
+1. 可使用以下构建代码进行项目的构建启动，如需数据等其他配置可在`LibraryBuilderConfiguration`里携带
+```
+LibraryBuilder.InitializeApplication(args, new LibraryBuilderConfiguration());
+```
+2. ApiResult改动（破坏行更改）
+原先继承ApiBaseController即可实现，现在使用以上的代码构建，内部会通过`ApiResultAttachFilter`和`ExceptionFilter`自动实现。
+此外ApiBaseController去除了此特性，如需升级包，可使用以上构建方式。
+
 ## 功能说明
 ### 生命周期的依赖注入
 - 共有三个接口：IScopeDependency、ISingletonDependency、ITransientDependency。
 - 对于每一对Service和IService，在Service接口引入中根据需求再添加以上三种生命周期接口中的一种。
-- 在项目启动程序Program.cs中，添加示例代码实现自动依赖注入：
-```
-RegisterLifeCycle.AddCustomServices(builder.Services);
-或
-使用Autofac
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(b =>
-{
-    b.RegisterModule<DependencyModule>();
-});
-```
+- 内部会使用AutoFac自动进行依赖注入
+
 ### EF Core
 - Entity类<br>
 实体类继承`Entity`类可默认包含`int`类型的`Id`字段主键，若需要其他类型的主键，比如`string`类型，可继承`Entity<string>`扩展类。
@@ -47,5 +47,10 @@ Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实�
 2. `GetAccessTokenAsync`：入参`QQAccessTokenInputDto`，返回`QQAccessTokenOutputDto`包含`AccessToken`等字段
 3. `GetOpenIdAsync`：入参`QQOpenIdInputDto`，返回`QQOpenIdOutputDto`包含`OpenId`等字段
 4. `GetUserInfoAsync`：入参`QQUserInfoInputDto`，返回`QQUserInfoOutputDto`包含QQ用户的基本信息
+### 请求
+#### IServiceClient
+调用相关函数进行相应的HTTP请求
+#### IResilientServiceClient
+可重试的调用相关函数进行相应的HTTP请求
 ### 待更新...
 

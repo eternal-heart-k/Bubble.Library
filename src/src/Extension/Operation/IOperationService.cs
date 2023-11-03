@@ -1,4 +1,4 @@
-﻿namespace Bubble.Library.src.Extension.Operation
+﻿namespace Bubble.Library.Extension.Operation
 {
     public interface IOperationService
     {

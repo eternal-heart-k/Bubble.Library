@@ -1,15 +1,17 @@
-﻿using Bubble.Library.Exception;
+﻿using System;
+using Bubble.Library.Exception;
 using Bubble.Library.Foundation.Dto.Common;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Bubble.Library.src.Trace;
-using Bubble.Library.src.Foundation.Constant;
+using Bubble.Library.Foundation.Constant;
 
 namespace Bubble.Library.Foundation.Attribute
 {
     /// <summary>
     /// API响应属性，为API调用接口包裹ApiResult
     /// </summary>
+    [Obsolete("已废弃，使用LibraryBuilder进行项目构建将会自动实现")]
     public class ApiResponseAttribute : ActionFilterAttribute
     {
         /// <summary>
