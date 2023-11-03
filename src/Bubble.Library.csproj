@@ -26,7 +26,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Polly" Version="7.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-	<None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

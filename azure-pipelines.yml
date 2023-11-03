@@ -1,5 +1,11 @@
 trigger:
-- master
+  branches:
+    include: 
+    - refs/heads/master 
+  paths:
+    include:
+    - src/Bubble.Library
+  batch: True
 
 pool:
   vmImage: 'windows-latest'
