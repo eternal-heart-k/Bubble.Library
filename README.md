@@ -2,13 +2,12 @@
 一个帮助进行.NET Web API开发的Nuget包，正在持续完善中...<br>
 
 ## 近期改动
-1. 可使用以下构建代码进行项目的构建启动，如需数据等其他配置可在`LibraryBuilderConfiguration`里携带
+1. 可使用以下构建代码进行项目的构建启动，如需Apollo、数据库、Redis等其他配置可在`LibraryBuilderConfiguration`里携带<br>
 ```
 LibraryBuilder.InitializeApplication(args, new LibraryBuilderConfiguration());
 ```
-2. ApiResult改动（破坏行更改）
-原先继承ApiBaseController即可实现，现在使用以上的代码构建，内部会通过`ApiResultAttachFilter`和`ExceptionFilter`自动实现。
-此外ApiBaseController去除了此特性，如需升级包，可使用以上构建方式。
+2. ApiResult改动（**破坏行更改**）<br>
+原先继承ApiBaseController即可实现，现在使用以上的代码构建，内部会通过`ApiResultAttachFilter`和`ExceptionFilter`自动实现。此外ApiBaseController去除了此特性，如需升级包，可使用以上构建方式。
 
 ## 功能说明
 ### 生命周期的依赖注入
@@ -52,5 +51,10 @@ Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实�
 调用相关函数进行相应的HTTP请求
 #### IResilientServiceClient
 可重试的调用相关函数进行相应的HTTP请求
+
+### IOperationService
+
+调用GetOperationId()函数可获取当前请求的操作Id，与ApiResult中的OperationId相同
+
 ### 待更新...
 
