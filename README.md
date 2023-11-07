@@ -56,7 +56,10 @@ Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实�
 调用GetOperationId()函数可获取当前请求的操作Id，与ApiResult中的OperationId相同
 
 ### RequestContext
-使用GetData()可获取当前请求的参数`operatorId`、`userId`等
+使用`GetData()`可获取当前请求的参数`operatorId`、`userId`等
+
+### JsonExtension
+使用`ToJsonString()`和`FromJsonString()`等方法可以进行Json的序列化和反序列化
 
 ### 待更新...
 
