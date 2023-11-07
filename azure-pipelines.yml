@@ -2,9 +2,6 @@ trigger:
   branches:
     include: 
     - refs/heads/master 
-  paths:
-    include:
-    - src/Bubble.Library
   batch: True
 
 pool:
