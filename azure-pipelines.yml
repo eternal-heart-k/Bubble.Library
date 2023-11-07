@@ -10,23 +10,26 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  projectName: 'src/Bubble.Library.csproj'
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: restore
-    projects: '**/*.csproj'
+    projects: $(projectName)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '**/*.csproj'
+    projects: $(projectName)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: pack
-    packagesToPack: '**/*.csproj'
+    packagesToPack: $(projectName)
     nobuild: true
     versioningScheme: 'off'
 
