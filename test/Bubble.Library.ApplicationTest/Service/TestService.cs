@@ -3,6 +3,7 @@ using Bubble.Library.ApplicationTest.Interface;
 using Bubble.Library.DependencyInjection;
 using Bubble.Library.Extension;
 using Bubble.Library.Extension.Operation;
+using Bubble.Library.Foundation;
 
 namespace Bubble.Library.ApplicationTest.Service
 {
@@ -27,6 +28,17 @@ namespace Bubble.Library.ApplicationTest.Service
             }
 
             return operationId;
+        }
+
+        public async Task<string> TestRequestContextAsync(string userId, string remark)
+        {
+            await Task.Delay(0);
+
+            var requestContext = RequestContext.GetData();
+
+            requestContext.Data.Add("testkey", "testvalue");
+
+            return $"UserId: {RequestContext.GetCurrentUserId} or {requestContext.UserId}, OperatorId: {requestContext.OperatorId}, remark: {requestContext.Remark}, data: {requestContext.Data.ToJsonString()}";
         }
     }
 }

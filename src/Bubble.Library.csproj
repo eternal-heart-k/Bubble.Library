@@ -6,7 +6,7 @@
 	  <NoWarn>CS1591</NoWarn>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageId>Bubble.Library</PackageId>
-	  <Version>2.1.1</Version>
+	  <Version>2.2.0</Version>
 	  <Authors>bubble</Authors>
 	  <Description>A .NET Web API Nuget that helps with rapid development.</Description>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>

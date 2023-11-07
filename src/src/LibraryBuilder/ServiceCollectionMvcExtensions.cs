@@ -13,6 +13,7 @@ namespace Bubble.Library.LibraryBuilder
             {
                 options.Filters.Add<ApiResultAttachFilter>();
                 options.Filters.Add<ExceptionFilter>();
+                options.Filters.Add<RequestContextFilter>(16);
             });
 
             mvcBuilder.AddJsonOptions(options =>

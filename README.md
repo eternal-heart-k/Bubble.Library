@@ -37,7 +37,7 @@ Service注入`IOssService`可调用OSS存储相关函数：目前支持有上传
 - `IsSuccess`：接口执行成功标识
 - `Message`：错误信息，结合`StringResponseException`异常，抛出的错误信息会体现在这。
 - `ErrorCode`：错误代码
-- `OperationId`：操作Id
+- `OperationId`：当前请求的操作Id
 ### QQ
 #### 快速登录
 Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实现会有所不同，所以这里实现了以下四个基本的阶段函数：
@@ -53,8 +53,10 @@ Service注入`IQQService`可调用QQ相关函数，因逻辑可能每个人实�
 可重试的调用相关函数进行相应的HTTP请求
 
 ### IOperationService
-
 调用GetOperationId()函数可获取当前请求的操作Id，与ApiResult中的OperationId相同
+
+### RequestContext
+使用GetData()可获取当前请求的参数`operatorId`、`userId`等
 
 ### 待更新...
 

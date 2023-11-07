@@ -16,5 +16,9 @@ namespace Bubble.Library.WebApiTest.Controllers
 
         [HttpGet("operationid")]
         public Task<string> TestOperationIdAsync(bool error) => _testService.TestOperationIdAsync(error);
+
+        [HttpGet("requestcontext")]
+        public Task<string> TestRequestContextAsync(string userId, string remark) =>
+            _testService.TestRequestContextAsync(userId, remark);
     }
 }
